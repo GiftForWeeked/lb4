@@ -11,9 +11,10 @@ namespace ConsoleApp3
     {
         static void Main()
         {
-            Person person1 = new Person { Name = "John" };
-            Car car1 = new Car { Brand = "Toyota", Model = "Crown", NumberOfDoors = 4, Year = Convert.ToDateTime(2010), Volume = 52, FuelType = "Gasoline" };
-            Motorcycle bike1 = new Motorcycle { Brand = "Harley-Davidson", Model = "Sport Glide", Year = Convert.ToDateTime(2021), Volume = 18.9, FuelType = "Gasoline", Type = "Sportster" };
+            Person person1 = new Person("John");
+            ;
+            Car car1 = new Car("Toyota", "Camry", 2.5, "Gasoline", new DateTime(2020, 1, 1), 4);
+            Motorcycle bike1 = new Motorcycle("Harley-Davidson", "Sportster", 1.2, "Gasoline", new DateTime(2015, 1, 1), "Cruiser");
 
             person1.AddVehicle(car1);
             person1.AddVehicle(bike1);
@@ -21,21 +22,20 @@ namespace ConsoleApp3
             Console.WriteLine($"Person: {person1.Name}");
             foreach (var vehicle in person1.Vehicles)
             {
-                Console.WriteLine($"Brand: {vehicle.Brand}, Model: {vehicle.Model}");
+                Console.WriteLine("--------------");
                 if (vehicle is Car)
                 {
-                    var car = (Car)vehicle;
-                    Console.WriteLine($"Number of doors: {car.NumberOfDoors}");
+                    car1.DisplayInfo();
                 }
                 else if (vehicle is Motorcycle)
                 {
-                    var bike = (Motorcycle)vehicle;
-                    Console.WriteLine($"Type: {bike.Type}");
+                    bike1.DisplayInfo();
                 }
             }
 
             person1.RemoveVehicle(bike1);
             person1.RemoveVehicle(car1);
+            Console.ReadKey();
         }
     }
 }

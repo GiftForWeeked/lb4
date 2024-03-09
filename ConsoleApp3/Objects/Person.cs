@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3.Objects
 {
-    public class Person
+    class Person
     {
-        public string Name { get; set; }
-        public List<Vehicle> Vehicles { get; set; }
-
-        public void AddVehicle(Vehicle vehicle) => Vehicles.Add(vehicle);
-
-        public void RemoveVehicle(Vehicle vehicle) => Vehicles.Remove(vehicle);
+        public Person(string name)
+        {
+            Name = name;
+            Vehicles = new List<Vehicle>();
+        }
+        public string Name { get; private set; }
+        public List<Vehicle> Vehicles { get; private set; }
+        public void AddVehicle(Vehicle vehicle)
+        {
+            Vehicles.Add(vehicle);
+        }
+        public void RemoveVehicle(Vehicle vehicle)
+        {
+            Vehicles.Remove(vehicle);
+        }
     }
 }

@@ -8,11 +8,19 @@ namespace ConsoleApp3.Objects
 {
     public abstract class Vehicle
     {
-        public string Brand { get; set; }
-        public string Model { get; set; }
-        public double Volume { get; set; }
-        public string FuelType { get; set; }
-        public DateTime Year { get; set; }
+        public Vehicle(string brand, string model, double volume, string fuelType, DateTime year)
+        {
+            Brand = brand;
+            Model = model;
+            Volume = volume;
+            FuelType = fuelType;
+            Year = year;
+        }
+        public string Brand { get; private set; }
+        public string Model { get; private set; }
+        public double Volume { get; private set; }
+        public string FuelType { get; private set; }
+        public DateTime Year { get; private set; }
     }
 }
 
