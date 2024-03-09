@@ -23,5 +23,52 @@ namespace ConsoleApp3.Objects
         {
             Vehicles.Remove(vehicle);
         }
+        public int PriceFleet()
+        {
+            int totalValue = 0;
+            foreach (var vehicle in Vehicles)
+            {
+                if (vehicle is Car)
+                {
+                    var car = (Car)vehicle;
+                    totalValue += car.Price;
+                }
+                else if (vehicle is Motorcycle)
+                {
+                    var bike = (Motorcycle)vehicle;
+                    totalValue += bike.Price;
+                }
+            }
+
+            return totalValue;
+        }
+        public void MostExp()
+        {
+            decimal totalPrice = 0;
+            string name = string.Empty;
+            foreach (var vehicle in Vehicles)
+            {
+                if (vehicle is Car)
+                {
+                    var car = (Car)vehicle;
+                    if (totalPrice < car.Price)
+                    {
+                        totalPrice = car.Price;
+                        name = car.Brand + ' ' + car.Model;
+                    }
+                }
+                else if (vehicle is Motorcycle)
+                {
+                    var bike = (Motorcycle)vehicle;
+                    if (totalPrice < bike.Price)
+                    {
+                        totalPrice = bike.Price;
+                        name = bike.Brand + ' ' + bike.Model;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Самый дорогой транспорт: {name}, стоймостью: {totalPrice}");
+        }
     }
 }
